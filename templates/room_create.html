@@ -1,0 +1,10 @@
+<h2>Add a New Room</h2>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Title" required><br>
+    <input type="text" name="location" placeholder="Location" required><br>
+    <input type="number" step="0.01" name="price" placeholder="Price" required><br>
+    <input type="text" name="slug" placeholder="Slug (e.g. cozy-room-1)" required><br>
+    <textarea name="description" placeholder="Description" required></textarea><br>
+    <button type="submit">Save</button>
+</form>

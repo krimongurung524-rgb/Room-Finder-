@@ -1,0 +1,12 @@
+<h2>Available Rooms</h2>
+
+{% for room in all_rooms %}
+    <div>
+        <h3>{{ room.title }}</h3>
+        <p>{{ room.location }} — Rs. {{ room.price }}</p>
+        <a href="{% url 'room_detail' room.slug %}">View this room</a>
+    </div>
+    <hr>
+{% endfor %}
+
+<a href="{% url 'room_create' %}">+ Add New Room</a>
