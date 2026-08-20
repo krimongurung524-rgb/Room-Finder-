@@ -1,12 +1,101 @@
-<h2>Available Rooms</h2>
-
-{% for room in all_rooms %}
-    <div>
-        <h3>{{ room.title }}</h3>
-        <p>{{ room.location }} — Rs. {{ room.price }}</p>
-        <a href="{% url 'room_detail' room.slug %}">View this room</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Room Finder</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #e0f2fe, #fce7f3);
+        margin: 0;
+        padding: 40px 20px;
+        min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .header h1 { font-size: 28px; color: #1e293b; margin: 0; }
+    .btn-pill {
+        display: inline-block;
+        background: #6366f1;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 4px 14px rgba(99,102,241,0.4);
+        transition: transform 0.2s ease;
+    }
+    .btn-pill:hover { transform: translateY(-2px); }
+    .room-bubble {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 24px 28px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .room-bubble:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+    .room-bubble h3 { margin: 0 0 8px; font-size: 20px; color: #1e293b; }
+    .room-bubble .location { color: #64748b; font-size: 14px; margin-bottom: 6px; }
+    .room-bubble .price {
+        display: inline-block;
+        background: #ecfdf5;
+        color: #059669;
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+    .room-bubble .view-btn {
+        display: inline-block;
+        background: #f1f5f9;
+        color: #4338ca;
+        padding: 8px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .room-bubble .view-btn:hover { background: #e0e7ff; }
+    .empty-bubble {
+        background: #fff;
+        border-radius: 24px;
+        padding: 40px;
+        text-align: center;
+        color: #94a3b8;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🏠 Room Finder</h1>
+        <a class="btn-pill" href="{% url 'room_create' %}">+ Add Room</a>
     </div>
-    <hr>
-{% endfor %}
 
-<a href="{% url 'room_create' %}">+ Add New Room</a>
+    {% for room in all_rooms %}
+        <div class="room-bubble">
+            <h3>{{ room.title }}</h3>
+            <p class="location">📍 {{ room.location }}</p>
+            <p class="price">Rs. {{ room.price }} / month</p>
+            <br>
+            <a class="view-btn" href="{% url 'room_detail' room.slug %}">View this room →</a>
+        </div>
+    {% empty %}
+        <div class="empty-bubble">Haal samma kunai room list gareko chaina.</div>
+    {% endfor %}
+</div>
+</body>
+</html>
