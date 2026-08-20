@@ -1,5 +1,61 @@
-<a href="{% url 'room_list' %}">&larr; Back</a>
-
-<h2>{{ room.title }}</h2>
-<p>{{ room.location }} — Rs. {{ room.price }}</p>
-<p>{{ room.description }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Room Detail</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #e0f2fe, #fce7f3);
+        margin: 0;
+        padding: 40px 20px;
+        min-height: 100vh;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #4338ca;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .detail-bubble {
+        background: #fff;
+        border-radius: 28px;
+        padding: 36px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .detail-bubble h2 { margin: 0 0 10px; font-size: 26px; color: #1e293b; }
+    .location { color: #64748b; font-size: 15px; margin-bottom: 10px; }
+    .price {
+        display: inline-block;
+        background: #ecfdf5;
+        color: #059669;
+        padding: 6px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .description {
+        background: #f8fafc;
+        border-radius: 18px;
+        padding: 20px;
+        color: #334155;
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="{% url 'room_list' %}">&larr; Back to all rooms</a>
+    <div class="detail-bubble">
+        <h2>{{ room.title }}</h2>
+        <p class="location">📍 {{ room.location }}</p>
+        <p class="price">Rs. {{ room.price }} / month</p>
+        <div class="description">{{ room.description }}</div>
+    </div>
+</div>
+</body>
+</html>
