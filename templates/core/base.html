@@ -94,6 +94,17 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     .detail-bubble h2 { margin: 0 0 10px; font-size: 26px; color: #1e293b; }
+    .detail-bubble .location { color: #64748b; font-size: 15px; margin-bottom: 10px; }
+    .detail-bubble .price {
+        display: inline-block;
+        background: #ecfdf5;
+        color: #059669;
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
     .description {
         background: #f8fafc;
         border-radius: 18px;
@@ -111,7 +122,8 @@
         margin: 0 auto;
     }
     .form-bubble h2 { margin: 0 0 24px; color: #1e293b; }
-    .form-bubble input, .form-bubble textarea {
+    .form-bubble input,
+    .form-bubble textarea {
         width: 100%;
         padding: 14px 18px;
         margin-bottom: 16px;
@@ -123,7 +135,8 @@
         outline: none;
         transition: box-shadow 0.2s ease;
     }
-    .form-bubble input:focus, .form-bubble textarea:focus {
+    .form-bubble input:focus,
+    .form-bubble textarea:focus {
         box-shadow: 0 0 0 3px #c7d2fe;
     }
     .form-bubble button {
@@ -148,8 +161,12 @@
         color: #94a3b8;
         box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
-    /* block.super le yehi extra style add garcha child bata */
-    {% block extra_style %}{% endblock %}
+    .page-heading {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 24px;
+    }
 </style>
 </head>
 <body>

@@ -2,19 +2,10 @@
 
 {% block title %}All Rooms — Room Finder{% endblock %}
 
-{% block extra_style %}
-    /* list page ko extra style — block.super le base ko CSS pani rakhcha, yo thapincha */
-    {% block.super %}
-    .page-heading {
-        font-size: 24px;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 24px;
-    }
-{% endblock %}
-
 {% block content %}
-    <h2 class="page-heading">Available Rooms</h2>
+    <h2 style="font-size:24px; font-weight:700; color:#1e293b; margin-bottom:24px;">
+        Available Rooms
+    </h2>
 
     {% for room in all_rooms %}
         <div class="room-bubble">
