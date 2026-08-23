@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load custom_tags %}
 
 {% block title %}All Rooms — Room Finder{% endblock %}
 
@@ -11,10 +12,19 @@
         <div class="room-bubble">
             <h3>{{ room.title }}</h3>
             <p class="location">📍 {{ room.location }}</p>
-            <p class="price">Rs. {{ room.price|floatformat:2 }} / month</p>
-            <a class="view-btn" href="{% url 'room_detail' room.slug %}">View this room →</a>
+
+            <p class="price">
+                Original: Rs. {{ room.price|floatformat:2 }}
+            </p>
+            <p class="price" style="background:#fef3c7; color:#d97706;">
+                With 13% VAT: {{ room.price|add_tax:13 }}
+            </p>
+
+            <a class="view-btn" href="{% url 'room_detail' room.slug %}">
+                View this room →
+            </a>
         </div>
     {% empty %}
-        <div class="empty-bubble">Haal samma kunai room list gareko chaina.</div>
+        <div class="empty-bubble">Haal samma kunai room chaina.</div>
     {% endfor %}
 {% endblock %}
