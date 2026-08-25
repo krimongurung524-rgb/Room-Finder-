@@ -26,3 +26,7 @@ def room_create(request):
 
     context = {'form': form}
     return render(request, 'core/room_create.html', context)
+
+
+def my_static_page(request):
+    return render(request, 'my_static_page.html')
