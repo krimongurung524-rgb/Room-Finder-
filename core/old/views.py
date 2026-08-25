@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Room
-from .forms import RoomForm
+from core.models import Room
+from core.old.forms import RoomForm
+
 
 
 def room_list(request):
@@ -13,6 +14,7 @@ def room_detail(request, slug):
     room = get_object_or_404(Room, slug=slug)
     context = {'room': room}
     return render(request, 'core/room_detail.html', context)
+
 
 
 def room_create(request):
