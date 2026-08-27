@@ -25,6 +25,7 @@ def room_create(request):
             return redirect('room_list')
     else:
         form = RoomForm()
+        
 
     context = {'form': form}
     return render(request, 'core/room_create.html', context)
