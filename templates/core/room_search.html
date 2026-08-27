@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Search Rooms — Room Finder{% endblock %}
+
+{% block content %}
+<div class="form-bubble" style="margin-bottom:30px;">
+    <h2>Search Rooms</h2>
+    <form method="GET">
+
+        {% for field in form %}
+            <div style="margin-bottom:16px;">
+                <label style="font-size:13px; color:#64748b; font-weight:600;">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p style="color:#ef4444; font-size:12px; margin-top:4px;">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p style="color:#ef4444; font-size:13px; margin-bottom:12px;">
+                    ⚠️ {{ error }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <button type="submit" class="btn-pill" style="width:100%;">
+            🔍 Search
+        </button>
+    </form>
+</div>
+
+{% if request.GET %}
+    <h3 style="margin-bottom:16px; color:#1e293b;">
+        Search Results ({{ results|length }} rooms found)
+    </h3>
+
+    {% for room in results %}
+        <div class="room-bubble">
+            <h3>{{ room.title }}</h3>
+            <p class="location">📍 {{ room.location }}</p>
+            <p class="price">Rs. {{ room.price|floatformat:2 }} / month</p>
+            <a class="view-btn" href="{% url 'room_detail' room.slug %}">
+                View this room →
+            </a>
+        </div>
+    {% empty %}
+        <div class="empty-bubble">
+            Kunai room fеlaо parеna — filter change garnus।
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
