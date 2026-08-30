@@ -79,3 +79,30 @@ def room_search(request):
         'results': results
     }
     return render(request, 'core/room_search.html', context)
+
+# UPDATE
+def room_update(request, slug):
+    room = get_object_or_404(Room, slug=slug)
+
+    if request.method == 'POST':
+        form = RoomForm(request.POST, instance=room)
+        if form.is_valid():
+            form.save()
+            return redirect('room_detail', slug=form.instance.slug)
+    else:
+        form = RoomForm(instance=room)
+
+    context = {'form': form, 'room': room}
+    return render(request, 'core/room_update.html', context)
+
+
+# DELETE
+def room_delete(request, slug):
+    room = get_object_or_404(Room, slug=slug)
+
+    if request.method == 'POST':
+        room.delete()
+        return redirect('room_list')
+
+    context = {'room': room}
+    return render(request, 'core/room_delete.html', context)

@@ -20,5 +20,20 @@
         </a>
 
         <div class="description">{{ room.description }}</div>
+
+        <div style="margin-top:24px; display:flex; gap:12px;">
+            <a href="{% url 'room_update' room.slug %}"
+               style="display:inline-block; background:#6366f1; color:#fff;
+                      padding:10px 20px; border-radius:999px; text-decoration:none;
+                      font-size:13px; font-weight:600;">
+                ✏️ Edit Room
+            </a>
+            <a href="{% url 'room_delete' room.slug %}"
+               style="display:inline-block; background:#fee2e2; color:#ef4444;
+                      padding:10px 20px; border-radius:999px; text-decoration:none;
+                      font-size:13px; font-weight:600;">
+                🗑️ Delete Room
+            </a>
+        </div>
     </div>
 {% endblock %}
