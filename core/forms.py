@@ -61,7 +61,7 @@ class RoomSearchForm(forms.Form):
         })
     )
     
-    # Custom validation — euta field ma
+    # Custom validation — field at once
     def clean_location(self):
         location = self.cleaned_data.get('location')
         
@@ -72,7 +72,7 @@ class RoomSearchForm(forms.Form):
             )
         return location
     
-    # Custom validation — duita field milayera (cross-field)
+    # Custom validation- In two fields altogether
     def clean(self):
         cleaned_data = super().clean()
         min_price = cleaned_data.get('min_price')
